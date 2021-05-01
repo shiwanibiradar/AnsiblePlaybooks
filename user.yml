@@ -1,0 +1,8 @@
+---
+- name: play
+  hosts: all
+  tasks:
+   - name: play
+     service:
+      name: httpd
+      state: present

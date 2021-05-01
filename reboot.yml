@@ -1,0 +1,10 @@
+---
+- name: Playbook for reboot the managed node
+  hosts: localhost
+  become: true
+  tasks:
+   - name: task for reboot
+     reboot: 
+       reboot_timeout: 180
+   - name: force a quick reboot
+     reboot:

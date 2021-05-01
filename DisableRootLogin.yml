@@ -1,0 +1,17 @@
+---
+- name: Playbook for disable root login 
+  hosts: localhost
+  become: true
+  tasks:
+   - name: Task for disable root login
+     lineinfile:
+       dest: /etc/ssh/sshd_config
+       regexp: "^PermitRootLogin"
+       line: "PermitRootLogin yes"
+     notify:
+       - restart sshd service
+  handlers:
+   - name: restart sshd service
+     service:
+      name: sshd
+      state: restarted
